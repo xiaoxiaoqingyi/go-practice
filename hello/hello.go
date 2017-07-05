@@ -1,6 +1,22 @@
 package main
 
 import "fmt"
+import "unsafe"
+
+const k int = 7
+
+const (
+	a2 = "abc"
+	b2 = len(a2)
+	c2 = unsafe.Sizeof(a2)
+)
+
+//在每一个const关键字出现时，被重置为0，然后再下一个const出现之前，每出现一次iota，其所代表的数字会自动增加1
+const (
+	a3 = iota
+	b3 = iota
+	c3 = iota
+)
 
 func main() {
 
@@ -20,5 +36,7 @@ func main() {
 	//这种不带声明格式的只能在函数体中出现
 	h, i := 123, "hello"
 
-	fmt.Println("Hello, 世界", a, b, c, d, e, f, g, h, i)
+	fmt.Println("Hello, 世界", a, b, c, d, e, f, g, h, i, k)
+
+	main2()
 }
